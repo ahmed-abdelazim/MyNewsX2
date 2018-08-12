@@ -16,12 +16,12 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 /**
  * Created by Person on 11/08/2018.
@@ -38,7 +38,8 @@ public class QueryUtils {
                 .appendQueryParameter("order-by", "newest")
                 .appendQueryParameter("show-references", "author")
                 .appendQueryParameter("show-tags", "contributor")
-                .appendQueryParameter("q", "Android")
+                .appendQueryParameter("page-size", "175")
+                .appendQueryParameter("q", "")
                 .appendQueryParameter("api-key", "c15d8295-7691-4172-a257-a7d065668eb4");
         String url = builder.build().toString();
         return url;
