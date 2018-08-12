@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
-//        getSupportLoaderManager().initLoader(LOADER_ID, null, this);
+
         // Get a reference to the ConnectivityManager to check state of network connectivity
         ConnectivityManager connMgr = (ConnectivityManager)
                 getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         // If there is a network connection, fetch data
         if (networkInfo != null && networkInfo.isConnected()) {
             // Get a reference to the LoaderManager, in order to interact with loaders.
-//            LoaderManager loaderManager = getLoaderManager();
+
 
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
@@ -70,11 +70,12 @@ public class MainActivity extends AppCompatActivity
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-            View loadingIndicator = findViewById(R.id.loading_indicator);
-            loadingIndicator.setVisibility(View.GONE);
 
             // Update empty state with no connection error message
             mEmptyStateTextView.setText(R.string.no_internet_connection);
+            View loadingIndicator = findViewById(R.id.loading_indicator);
+            loadingIndicator.setVisibility(View.GONE);
+
         }
 
     }
@@ -104,10 +105,25 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onLoaderReset(Loader<List<News>> loader) {
 
+
     }
 
     @Override
     public void onRefresh() {
+        ConnectivityManager connMgr = (ConnectivityManager)
+                getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+
+
+        } else {
+            mEmptyStateTextView.setText(R.string.no_internet_connection);
+            View loadingIndicator = findViewById(R.id.loading_indicator);
+            loadingIndicator.setVisibility(View.GONE);
+
+        }
+
         getSupportLoaderManager().restartLoader(LOADER_ID, null, this);
+
     }
 }

@@ -29,7 +29,7 @@ import java.util.Locale;
 
 public class QueryUtils {
 
-
+    public boolean connTimeout = false;
     static String createStringUrl() {
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("http")
@@ -89,6 +89,7 @@ public class QueryUtils {
                 jsonResponse = readFromStream(inputStream);
             } else {
                 Log.e("mainActivity", "Error response code: " + urlConnection.getResponseCode());
+
             }
         } catch (IOException e) {
             Log.e("Queryutils", "Error making HTTP request: ", e);
