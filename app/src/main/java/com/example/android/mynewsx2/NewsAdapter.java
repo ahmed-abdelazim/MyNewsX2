@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Person on 11/08/2018.
@@ -29,10 +28,10 @@ public class NewsAdapter extends ArrayAdapter<News> {
             convertView
                     = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
-        TextView title = (TextView) convertView.findViewById(R.id.title);
-        TextView author = (TextView) convertView.findViewById(R.id.author);
-        TextView date = (TextView) convertView.findViewById(R.id.date);
-        TextView section = (TextView) convertView.findViewById(R.id.section);
+        TextView title = convertView.findViewById(R.id.title);
+        TextView author = convertView.findViewById(R.id.author);
+        TextView date = convertView.findViewById(R.id.date);
+        TextView section = convertView.findViewById(R.id.section);
 
         News currentNews = getItem(position);
         title.setText(currentNews.getTitle());

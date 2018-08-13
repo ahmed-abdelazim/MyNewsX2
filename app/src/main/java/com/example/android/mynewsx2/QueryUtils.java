@@ -29,7 +29,7 @@ import java.util.Locale;
 
 public class QueryUtils {
 
-    public boolean connTimeout = false;
+
     static String createStringUrl() {
         Uri.Builder builder = new Uri.Builder();
         builder.scheme("http")
@@ -38,8 +38,7 @@ public class QueryUtils {
                 .appendQueryParameter("order-by", "newest")
                 .appendQueryParameter("show-references", "author")
                 .appendQueryParameter("show-tags", "contributor")
-                .appendQueryParameter("page-size", "175")
-                .appendQueryParameter("q", "")
+                .appendQueryParameter("q", "Android")
                 .appendQueryParameter("api-key", "c15d8295-7691-4172-a257-a7d065668eb4");
         String url = builder.build().toString();
         return url;
@@ -89,7 +88,6 @@ public class QueryUtils {
                 jsonResponse = readFromStream(inputStream);
             } else {
                 Log.e("mainActivity", "Error response code: " + urlConnection.getResponseCode());
-
             }
         } catch (IOException e) {
             Log.e("Queryutils", "Error making HTTP request: ", e);
