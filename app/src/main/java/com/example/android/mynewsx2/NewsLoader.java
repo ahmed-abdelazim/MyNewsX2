@@ -2,10 +2,7 @@ package com.example.android.mynewsx2;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
-import android.util.Log;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -13,10 +10,13 @@ import java.util.List;
  */
 
 public class NewsLoader extends AsyncTaskLoader<List<News>> {
+    //    private static final String LOG_TAG = NewsLoader.class.getName();
+    private String url;
 
 
-    public NewsLoader(Context context) {
+    public NewsLoader(Context context, String url) {
         super(context);
+        this.url = url;
     }
 
     @Override
@@ -27,15 +27,12 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
 
     @Override
     public List<News> loadInBackground() {
-        List<News> listOfNews = null;
-        try {
-            URL url = QueryUtils.createUrl();
-            String jsonResponse = QueryUtils.makeHttpRequest(url);
-            listOfNews = QueryUtils.parseJson(jsonResponse);
-        } catch (IOException e) {
-            Log.e("Queryutils", "Error Loader LoadInBackground: ", e);
-        }
-        return listOfNews;
-    }
+//        if (url == null) {
+//            return null;
+//        }
 
+        List<News> newsList = QueryUtils.fetchNews(url);
+        return newsList;
+
+    }
 }
