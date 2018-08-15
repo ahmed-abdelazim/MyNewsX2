@@ -14,7 +14,7 @@
     <string name="settings_order_by_key">oldest</string>
     <string name="settings_order_by_default">newest</string>
 
-    <!-- Label for order-by magnitude option [CHAR LIMIT=20] -->
+    <!-- Label for order-by option [CHAR LIMIT=20] -->
     <string name="settings_order_by_oldest_label">Oldest</string>
     <string name="settings_order_by_oldest_value" translatable="false">oldest</string>
 
